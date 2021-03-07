@@ -14,6 +14,10 @@ namespace Homework_Theme_03
             var userName1 = Console.ReadLine();
             Console.WriteLine("Введите имя второго игрока: ");
             var userName2 = Console.ReadLine();
+
+            var randomize = new Random();
+            var gameNumber = randomize.Next(12, 121);
+            Console.WriteLine($"Число: {gameNumber}");
             // Просматривая сайты по поиску работы, у вас вызывает интерес следующая вакансия:
 
             // Требуемый опыт работы: без опыта
