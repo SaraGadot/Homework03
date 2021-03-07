@@ -10,11 +10,10 @@ namespace Homework_Theme_03
     {
         static void Main(string[] args)
         {
-            //var name = "Мария Гадот";
-
-            Console.WriteLine("Введите имя: ");
-            var name = Console.ReadLine();
-            Console.WriteLine(name);
+            Console.WriteLine("Введите имя первого игрока: ");
+            var userName1 = Console.ReadLine();
+            Console.WriteLine("Введите имя второго игрока: ");
+            var userName2 = Console.ReadLine();
             // Просматривая сайты по поиску работы, у вас вызывает интерес следующая вакансия:
 
             // Требуемый опыт работы: без опыта
