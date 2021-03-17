@@ -18,17 +18,18 @@ namespace Homework_Theme_03
             var randomize = new Random();
             var gameNumber = randomize.Next(12, 121);
 
+            for (; gameNumber > 0; )
+            {
+                Console.WriteLine($"Число: {gameNumber}");
+                Console.Write($"Ход {userName1}: ");
+                var userTry = Convert.ToInt32(Console.ReadLine());
+                gameNumber = gameNumber - userTry;
+            }
 
-            Console.WriteLine($"Число: {gameNumber}");
-            Console.Write($"Ход {userName1}: ");
-            var userTry = Convert.ToInt32(Console.ReadLine());
-            gameNumber = gameNumber - userTry;
-
-
-            Console.WriteLine($"Число: {gameNumber}");
-            Console.Write($"Ход {userName2}: ");
-            var userTry2 = Convert.ToInt32(Console.ReadLine());
-            gameNumber = gameNumber - userTry2;
+            //Console.WriteLine($"Число: {gameNumber}");
+            //Console.Write($"Ход {userName2}: ");
+            //var userTry2 = Convert.ToInt32(Console.ReadLine());
+            //gameNumber = gameNumber - userTry2;
 
 
 
