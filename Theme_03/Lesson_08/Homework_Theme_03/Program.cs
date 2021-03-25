@@ -12,19 +12,32 @@ namespace Homework_Theme_03
         {
             Console.WriteLine("Введите имя первого игрока: ");
             var userName1 = Console.ReadLine();
+            Console.WriteLine();
             Console.WriteLine("Введите имя второго игрока: ");
             var userName2 = Console.ReadLine();
 
             var randomize = new Random();
             var gameNumber = randomize.Next(12, 121);
 
-            for (; gameNumber > 0; )
+            for (var tryNumber = 0; gameNumber > 0; tryNumber++)
             {
+                Console.WriteLine();
                 Console.WriteLine($"Число: {gameNumber}");
-                Console.Write($"Ход {userName1}: ");
+                if ((tryNumber/2)*2 == tryNumber)
+                {
+                    Console.Write($"Ход {userName1}: ");
+                }
+                else 
+                {
+                    Console.Write($"Ход {userName2}: ");
+                }
+
                 var userTry = Convert.ToInt32(Console.ReadLine());
                 gameNumber = gameNumber - userTry;
             }
+
+            Console.WriteLine();
+            Console.WriteLine("Конец игры");
 
             //Console.WriteLine($"Число: {gameNumber}");
             //Console.Write($"Ход {userName2}: ");
