@@ -20,10 +20,14 @@ namespace Homework_Theme_03
             //var gameNumber = randomize.Next(12, 121);
             var gameNumber = randomize.Next(12, 15);
 
-            for (var tryNumber = 0; gameNumber > 0; tryNumber++)
+            for (var tryNumber = 0; ; tryNumber++)
             {
                 Console.WriteLine();
                 Console.WriteLine($"Число: {gameNumber}");
+
+                if (gameNumber <= 0)
+                    break;
+
                 if (tryNumber % 2 == 0)
                 {
                     Console.Write($"Ход {userName1}: ");
