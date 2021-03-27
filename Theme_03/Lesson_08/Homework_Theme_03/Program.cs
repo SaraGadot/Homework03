@@ -17,7 +17,8 @@ namespace Homework_Theme_03
             var userName2 = Console.ReadLine();
 
             var randomize = new Random();
-            var gameNumber = randomize.Next(12, 121);
+            //var gameNumber = randomize.Next(12, 121);
+            var gameNumber = randomize.Next(12, 15);
 
             for (var tryNumber = 0; gameNumber > 0; tryNumber++)
             {
@@ -33,6 +34,13 @@ namespace Homework_Theme_03
                 }
 
                 var userTry = Convert.ToInt32(Console.ReadLine());
+                
+                for (; userTry < 1 || 4 < userTry || gameNumber < userTry;)
+                {
+                    Console.WriteLine("Недопустимое число, введите от 1 до 4, но не больше текущего числа игры");
+                    userTry = Convert.ToInt32(Console.ReadLine());
+                }
+
                 gameNumber = gameNumber - userTry;
             }
 
