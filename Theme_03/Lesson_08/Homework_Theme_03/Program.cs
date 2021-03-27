@@ -24,7 +24,7 @@ namespace Homework_Theme_03
             {
                 Console.WriteLine();
                 Console.WriteLine($"Число: {gameNumber}");
-                if ((tryNumber/2)*2 == tryNumber)
+                if (tryNumber % 2 == 0)
                 {
                     Console.Write($"Ход {userName1}: ");
                 }
