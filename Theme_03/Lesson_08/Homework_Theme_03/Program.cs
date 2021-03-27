@@ -26,7 +26,20 @@ namespace Homework_Theme_03
                 Console.WriteLine($"Число: {gameNumber}");
 
                 if (gameNumber <= 0)
+                {
+                    Console.WriteLine();
+                    Console.WriteLine("Конец игры");
+
+                    if (tryNumber % 2 == 0)
+                    {
+                        Console.WriteLine($"Выиграл {userName2}");
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Выиграл {userName1}");
+                    }
                     break;
+                }
 
                 if (tryNumber % 2 == 0)
                 {
@@ -48,8 +61,7 @@ namespace Homework_Theme_03
                 gameNumber = gameNumber - userTry;
             }
 
-            Console.WriteLine();
-            Console.WriteLine("Конец игры");
+
 
             //Console.WriteLine($"Число: {gameNumber}");
             //Console.Write($"Ход {userName2}: ");
