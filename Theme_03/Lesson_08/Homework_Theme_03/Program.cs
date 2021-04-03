@@ -10,10 +10,10 @@ namespace Homework_Theme_03
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Введите имя первого игрока: ");
+            Console.WriteLine("Введите имя первого игрока (или нажмите Enter чтобы играл компьютер): ");
             var userName1 = Console.ReadLine();
             Console.WriteLine();
-            Console.WriteLine("Введите имя второго игрока: ");
+            Console.WriteLine("Введите имя второго игрока (или нажмите Enter чтобы играл компьютер): ");
             var userName2 = Console.ReadLine();
 
             var randomize = new Random();
@@ -25,40 +25,54 @@ namespace Homework_Theme_03
                 Console.WriteLine();
                 Console.WriteLine($"Число: {gameNumber}");
 
-                if (gameNumber <= 0)
+                var userName = tryNumber % 2 == 0 ? userName1 : userName2;
+                var isComputer = userName == "";
+                if (isComputer)
                 {
-                    Console.WriteLine();
-                    Console.WriteLine("Конец игры");
-
-                    if (tryNumber % 2 == 0)
-                    {
-                        Console.WriteLine($"Выиграл {userName2}");
-                    }
-                    else
-                    {
-                        Console.WriteLine($"Выиграл {userName1}");
-                    }
-                    break;
+                    userName = $"Мега-мозг-{(tryNumber % 2)+1}";
                 }
 
-                if (tryNumber % 2 == 0)
-                {
-                    Console.Write($"Ход {userName1}: ");
-                }
-                else 
-                {
-                    Console.Write($"Ход {userName2}: ");
-                }
+                Console.Write($"Ход {userName}: ");
 
-                var userTry = Convert.ToInt32(Console.ReadLine());
-                
-                for (; userTry < 1 || 4 < userTry || gameNumber < userTry;)
+                int userTry;
+                if (!isComputer)
                 {
-                    Console.WriteLine("Недопустимое число, введите от 1 до 4, но не больше текущего числа игры");
                     userTry = Convert.ToInt32(Console.ReadLine());
+
+                    for (; userTry < 1 || 4 < userTry || gameNumber < userTry;)
+                    {
+                        Console.WriteLine("Недопустимое число, введите от 1 до 4, но не больше текущего числа игры");
+                        userTry = Convert.ToInt32(Console.ReadLine());
+                    }
+
+                }
+                else
+                {
+                    var computerTry = gameNumber % 5;
+                    if (computerTry == 0)
+                    {
+                        computerTry = randomize.Next(1, 5);
+                    }
+
+                    Console.WriteLine(computerTry);
+                    userTry = computerTry;
                 }
 
                 gameNumber = gameNumber - userTry;
+
+                if (gameNumber <= 0)
+                {
+                    Console.WriteLine();
+                    Console.WriteLine($"Число: {gameNumber}");
+
+                    Console.WriteLine();
+                    Console.WriteLine("Конец игры");
+
+                    Console.WriteLine($"Выиграл {userName}");
+
+                    break;
+                }
+
             }
 
 
