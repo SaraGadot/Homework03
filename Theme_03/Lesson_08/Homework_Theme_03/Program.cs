@@ -10,10 +10,10 @@ namespace Homework_Theme_03
     {
         static void Main(string[] args)
         { 
-            Console.WriteLine("Описание игры: программа загадывает случайное число от 12 до 120.");            
+            Console.WriteLine("Описание игры: программа загадывает случайное число.");            
             Console.WriteLine();
             Console.WriteLine("Игроки ходят по очереди.");
-            Console.WriteLine("Игрок, ход которого указан вводит число, которое может принимать значения 1, 2, 3 или 4.");
+            Console.WriteLine("Игрок, ход которого указан вводит число, которое может принимать значения от 1 до максимально возможного числа хода");
             Console.WriteLine("Введенное число вычитается из числа игры. Выигрывает тот игрок, после чьего хода число игры ");
             Console.WriteLine("обратилось в 0");
             Console.WriteLine();
@@ -29,6 +29,8 @@ namespace Homework_Theme_03
             Console.WriteLine("Введите максимально возможное число игры:");
             var maxGameNumber = Convert.ToInt32(Console.ReadLine());
 
+            Console.WriteLine("Введите максимально возможное число хода:");
+            var maxUserTry = Convert.ToInt32(Console.ReadLine());
             for (; ; )
             {
                 var randomize = new Random();
@@ -53,19 +55,19 @@ namespace Homework_Theme_03
                     {
                         userTry = Convert.ToInt32(Console.ReadLine());
 
-                        for (; userTry < 1 || 4 < userTry || gameNumber < userTry;)
+                        for (; userTry < 1 || maxUserTry < userTry || gameNumber < userTry;)
                         {
-                            Console.WriteLine("Недопустимое число, введите от 1 до 4, но не больше текущего числа игры");
+                            Console.WriteLine($"Недопустимое число, введите от 1 до {maxUserTry}, но не больше текущего числа игры");
                             userTry = Convert.ToInt32(Console.ReadLine());
                         }
 
                     }
                     else
                     {
-                        var computerTry = gameNumber % 5;
+                        var computerTry = gameNumber % (1 + maxUserTry);
                         if (computerTry == 0)
                         {
-                            computerTry = randomize.Next(1, 5);
+                            computerTry = randomize.Next(1, maxUserTry + 1);
                         }
 
                         Console.WriteLine(computerTry);
