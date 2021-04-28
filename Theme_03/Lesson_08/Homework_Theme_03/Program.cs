@@ -17,17 +17,22 @@ namespace Homework_Theme_03
             Console.WriteLine("Введенное число вычитается из числа игры. Выигрывает тот игрок, после чьего хода число игры ");
             Console.WriteLine("обратилось в 0");
             Console.WriteLine();
+
             Console.WriteLine("Введите имя первого игрока (или нажмите Enter чтобы играл компьютер): ");
             var userName1 = Console.ReadLine();
             Console.WriteLine();
             Console.WriteLine("Введите имя второго игрока (или нажмите Enter чтобы играл компьютер): ");
             var userName2 = Console.ReadLine();
 
+            Console.WriteLine("Введите минимально возможное число игры:");
+            var minGameNumber = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Введите максимально возможное число игры:");
+            var maxGameNumber = Convert.ToInt32(Console.ReadLine());
+
             for (; ; )
             {
                 var randomize = new Random();
-                //var gameNumber = randomize.Next(12, 121);
-                var gameNumber = randomize.Next(12, 15);
+                var gameNumber = randomize.Next(minGameNumber, maxGameNumber);
 
                 for (var tryNumber = 0; ; tryNumber++)
                 {
