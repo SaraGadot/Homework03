@@ -23,66 +23,74 @@ namespace Homework_Theme_03
             Console.WriteLine("Введите имя второго игрока (или нажмите Enter чтобы играл компьютер): ");
             var userName2 = Console.ReadLine();
 
-            var randomize = new Random();
-            //var gameNumber = randomize.Next(12, 121);
-            var gameNumber = randomize.Next(12, 15);
-
-            for (var tryNumber = 0; ; tryNumber++)
+            for (; ; )
             {
-                Console.WriteLine();
-                Console.WriteLine($"Число: {gameNumber}");
+                var randomize = new Random();
+                //var gameNumber = randomize.Next(12, 121);
+                var gameNumber = randomize.Next(12, 15);
 
-                var userName = tryNumber % 2 == 0 ? userName1 : userName2;
-                var isComputer = userName == "";
-                if (isComputer)
-                {
-                    userName = $"Мега-мозг-{(tryNumber % 2)+1}";
-                }
-
-                Console.Write($"Ход {userName}: ");
-
-                int userTry;
-                if (!isComputer)
-                {
-                    userTry = Convert.ToInt32(Console.ReadLine());
-
-                    for (; userTry < 1 || 4 < userTry || gameNumber < userTry;)
-                    {
-                        Console.WriteLine("Недопустимое число, введите от 1 до 4, но не больше текущего числа игры");
-                        userTry = Convert.ToInt32(Console.ReadLine());
-                    }
-
-                }
-                else
-                {
-                    var computerTry = gameNumber % 5;
-                    if (computerTry == 0)
-                    {
-                        computerTry = randomize.Next(1, 5);
-                    }
-
-                    Console.WriteLine(computerTry);
-                    userTry = computerTry;
-                }
-
-                gameNumber = gameNumber - userTry;
-
-                if (gameNumber <= 0)
+                for (var tryNumber = 0; ; tryNumber++)
                 {
                     Console.WriteLine();
                     Console.WriteLine($"Число: {gameNumber}");
 
-                    Console.WriteLine();
-                    Console.WriteLine("Конец игры");
+                    var userName = tryNumber % 2 == 0 ? userName1 : userName2;
+                    var isComputer = userName == "";
+                    if (isComputer)
+                    {
+                        userName = $"Мега-мозг-{(tryNumber % 2) + 1}";
+                    }
 
-                    Console.WriteLine($"Выиграл {userName}");
+                    Console.Write($"Ход {userName}: ");
 
+                    int userTry;
+                    if (!isComputer)
+                    {
+                        userTry = Convert.ToInt32(Console.ReadLine());
+
+                        for (; userTry < 1 || 4 < userTry || gameNumber < userTry;)
+                        {
+                            Console.WriteLine("Недопустимое число, введите от 1 до 4, но не больше текущего числа игры");
+                            userTry = Convert.ToInt32(Console.ReadLine());
+                        }
+
+                    }
+                    else
+                    {
+                        var computerTry = gameNumber % 5;
+                        if (computerTry == 0)
+                        {
+                            computerTry = randomize.Next(1, 5);
+                        }
+
+                        Console.WriteLine(computerTry);
+                        userTry = computerTry;
+                    }
+
+                    gameNumber = gameNumber - userTry;
+
+                    if (gameNumber <= 0)
+                    {
+                        Console.WriteLine();
+                        Console.WriteLine($"Число: {gameNumber}");
+
+                        Console.WriteLine();
+                        Console.WriteLine("Конец игры");
+
+                        Console.WriteLine($"Выиграл {userName}");
+
+                        break;
+                    }
+
+                }
+                Console.WriteLine("Если хотите реванш, введите 'да', иначе нажмите Enter");
+                var gameRepeat = Console.ReadLine();
+                if (gameRepeat != "да")
+                {
                     break;
                 }
 
             }
-
-
 
             //Console.WriteLine($"Число: {gameNumber}");
             //Console.Write($"Ход {userName2}: ");
